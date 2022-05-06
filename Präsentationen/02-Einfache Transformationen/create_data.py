@@ -1,6 +1,10 @@
 import sqlite3
 import json
 import csv 
+import os
+
+if os.path.isfile("Diddly_Squat_Farm.db"):
+    os.remove("Diddly_Squat_Farm.db")
 
 # Datensatz
 fields_for_insert = [(5, 'Barn Ground', 10), (6, 'Bank', 10), (7, 'Far Brossler', 20)]
@@ -33,7 +37,10 @@ vegetablesData = [
         "field": 5,
         "week": 1,
         "water_consumption": 6,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -41,7 +48,10 @@ vegetablesData = [
         "field": 6,
         "week": 1,
         "water_consumption": 4,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -49,7 +59,10 @@ vegetablesData = [
         "field": 5,
         "week": 2,
         "water_consumption": 5,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -57,7 +70,10 @@ vegetablesData = [
         "field": 6,
         "week": 2,
         "water_consumption": 4,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -65,7 +81,10 @@ vegetablesData = [
         "field": 5,
         "week": 3,
         "water_consumption": 6,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -73,7 +92,10 @@ vegetablesData = [
         "field": 6,
         "week": 3,
         "water_consumption": 5,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -81,7 +103,10 @@ vegetablesData = [
         "field": 5,
         "week": 4,
         "water_consumption": 7,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -89,7 +114,10 @@ vegetablesData = [
         "field": 6,
         "week": 4,
         "water_consumption": 3,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -97,7 +125,10 @@ vegetablesData = [
         "field": 5,
         "week": 5,
         "water_consumption": 7,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 5
     },
     {
@@ -105,7 +136,10 @@ vegetablesData = [
         "field": 6,
         "week": 5,
         "water_consumption": 6,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -113,7 +147,10 @@ vegetablesData = [
         "field": 5,
         "week": 6,
         "water_consumption": 9,
-        "revenue": 10,
+        "revenue": {
+            "net": 8,
+            "tax": 2
+        },
         "yield_per_sqm": 10
     },
     {
@@ -121,7 +158,10 @@ vegetablesData = [
         "field": 6,
         "week": 1,
         "water_consumption": 7,
-        "revenue": 0,
+        "revenue": {
+            "net": 0,
+            "tax": 0
+        },
         "yield_per_sqm": 0
     },
     {
@@ -129,7 +169,10 @@ vegetablesData = [
         "field": 5,
         "week": 7,
         "water_consumption": 10,
-        "revenue": 20,
+        "revenue": {
+            "net": 16,
+            "tax": 4
+        },
         "yield_per_sqm": 25
     },
     {
@@ -137,7 +180,10 @@ vegetablesData = [
         "field": 6,
         "week": 7,
         "water_consumption": 8,
-        "revenue": 40,
+        "revenue": {
+            "net": 32,
+            "tax": 8
+        },
         "yield_per_sqm": 160
     },
     {
@@ -145,7 +191,10 @@ vegetablesData = [
         "field": 5,
         "week": 8,
         "water_consumption": 13,
-        "revenue": 50,
+        "revenue": {
+            "net": 40,
+            "tax": 10
+        },
         "yield_per_sqm": 25
     },
     {
@@ -153,7 +202,10 @@ vegetablesData = [
         "field": 6,
         "week": 8,
         "water_consumption": 8,
-        "revenue": 60,
+        "revenue": {
+            "net": 50,
+            "tax": 12
+        },
         "yield_per_sqm": 240
     },
     {
@@ -161,7 +213,10 @@ vegetablesData = [
         "field": 5,
         "week": 9,
         "water_consumption": 12,
-        "revenue": 50,
+        "revenue": {
+            "net": 40,
+            "tax": 10
+        },
         "yield_per_sqm": 25
     },
     {
@@ -169,7 +224,10 @@ vegetablesData = [
         "field": 6,
         "week": 1,
         "water_consumption": None,
-        "revenue": 60,
+        "revenue": {
+            "net": 50,
+            "tax": 12
+        },
         "yield_per_sqm": 0
     },
     {
@@ -177,7 +235,10 @@ vegetablesData = [
         "field": 5,
         "week": 10,
         "water_consumption": 5,
-        "revenue": 50,
+        "revenue": {
+            "net": 40,
+            "tax": 10
+        },
         "yield_per_sqm": 25
     },
     {
@@ -185,7 +246,10 @@ vegetablesData = [
         "field": 5,
         "week": 11,
         "water_consumption": None,
-        "revenue": 50,
+        "revenue": {
+            "net": 40,
+            "tax": 10
+        },
         "yield_per_sqm": 0
     }
 ]
